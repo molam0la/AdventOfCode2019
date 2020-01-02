@@ -5,33 +5,58 @@ public class Day2 {
 
     public int[] runOptcode(int[] intInput) {
 
-        for (int value : intInput) {
-            int output;
-            int firstInput;
-            int secondInput;
-            int result;
+//        for (int value : intInput) {
 
-            switch (value) {
+            for (int i = 0; i < intInput.length; i++) {
+
+                int output;
+                int firstInput;
+                int secondInput;
+                int result;
+
+            switch (intInput[i]) {
                 case 1:
-                    System.out.println(Arrays.toString(intInput));
-                    int optcode1Index = Common.getArrayIndex(intInput, value);
+                    System.out.println("Original array: " + Arrays.toString(intInput));
+                    int optcode1Index = i;
+                    System.out.println("optcode1Index " + optcode1Index);
+
 
                     firstInput = intInput[optcode1Index + 1];
+                    System.out.println("firstInput " + firstInput);
+
+                    //problem is the helper method, giving wrong index if duplicate values are present
+
                     secondInput = intInput[optcode1Index + 2];
+                    System.out.println("secondInput " + secondInput);
+
                     output = intInput[optcode1Index + 3];
+
                     result = intInput[firstInput] + intInput[secondInput];
+                    System.out.println("result of " + intInput[firstInput] + " + " + intInput[secondInput] + " = " + result + "\n");
+
                     intInput[output] = result;
+                    System.out.println("result Optcode1 " + Arrays.toString(intInput)+ "\n");
+
                     break;
                 case 2:
-                    System.out.println(Arrays.toString(intInput));
+                    System.out.println("Original array: " + Arrays.toString(intInput));
 
-                    int optcode2Index = Common.getArrayIndex(intInput, value);
+                    int optcode2Index = i;
+                    System.out.println("optcode2Index " + optcode2Index);
+
 
                     firstInput = intInput[optcode2Index + 1];
+                    System.out.println("firstInput " + firstInput);
+
                     secondInput = intInput[optcode2Index + 2];
+                    System.out.println("secondInput " + secondInput);
+
                     output = intInput[optcode2Index + 3];
                     result = intInput[firstInput] * intInput[secondInput];
+                    System.out.println("result of " + intInput[firstInput] + " * " + intInput[secondInput] + " = " + result + "\n");
+
                     intInput[output] = result;
+                    System.out.println("result Optcode2: " + Arrays.toString(intInput) + "\n");
                     break;
                 case 99:
                     break;

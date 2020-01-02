@@ -1,14 +1,13 @@
+import java.util.stream.IntStream;
+
 public class Common {
 
-    static int getArrayIndex(int[] arr, int value) {
-        int k = 0;
-        for (int i = 0; i < arr.length; i++) {
-
-            if (arr[i] == value) {
-                k = i;
-                break;
-            }
-        }
-        return k;
+    public static int findIndex(int arr[], int t)
+    {
+        int len = arr.length;
+        return IntStream.range(0, len)
+                .filter(i -> t == arr[i])
+                .findFirst() // first occurrence
+                .orElse(-1); // No element found
     }
 }

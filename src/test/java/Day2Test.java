@@ -1,6 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 import static junit.framework.TestCase.assertEquals;
@@ -66,9 +67,11 @@ public class Day2Test {
         intInput = f.toIntArray(stringInput, ",");
         int[] expectedResult = {30, 1, 1, 4, 2, 5, 6, 0, 99};
         int[] actualResult = d2.runOptcode(intInput);
+        System.out.println("actual result" + Arrays.toString(actualResult));
+        System.out.println("expected result" + Arrays.toString(expectedResult));
+
         assertTrue(Arrays.equals(expectedResult, actualResult));
     }
-
 
     @Test
     public void testAllOptcodesTogether() {
