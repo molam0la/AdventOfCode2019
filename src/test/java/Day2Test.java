@@ -79,4 +79,11 @@ public class Day2Test {
         int[] actualResult = d2.runOptcode(intInput);
         assertTrue(Arrays.equals(expectedResult, actualResult));
     }
+
+    @Test
+    public void testAllOptcodesTogether2() {
+        int[] expectedResult = {3500, 9, 10, 70, 2, 3, 11, 0, 99, 30, 40, 50};
+        int[] actualResult = d2.runOptcode(intInput);
+        assertTrue(Arrays.equals(expectedResult, actualResult));
+    }
 }
