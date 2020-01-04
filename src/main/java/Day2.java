@@ -7,12 +7,12 @@ public class Day2 {
 
 //        for (int value : intInput) {
 
-            for (int i = 0; i < intInput.length; i++) {
+        for (int i = 0; i < intInput.length; i++) {
 
-                int output;
-                int firstInput;
-                int secondInput;
-                int result;
+            int output;
+            int firstInput;
+            int secondInput;
+            int result;
 
             switch (intInput[i]) {
                 case 1:
@@ -35,8 +35,8 @@ public class Day2 {
                     System.out.println("result of " + intInput[firstInput] + " + " + intInput[secondInput] + " = " + result + "\n");
 
                     intInput[output] = result;
-                    System.out.println("result Optcode1 " + Arrays.toString(intInput)+ "\n");
-
+                    System.out.println("result Optcode1 " + Arrays.toString(intInput) + "\n");
+                    i += 3;
                     break;
                 case 2:
                     System.out.println("Original array: " + Arrays.toString(intInput));
@@ -57,9 +57,10 @@ public class Day2 {
 
                     intInput[output] = result;
                     System.out.println("result Optcode2: " + Arrays.toString(intInput) + "\n");
+                    i += 3;
                     break;
                 case 99:
-                    break;
+                    return intInput;
             }
         }
         return intInput;
