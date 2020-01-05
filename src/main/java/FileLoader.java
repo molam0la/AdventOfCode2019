@@ -6,13 +6,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
 public class FileLoader {
-
-    public List<String> allLines;
 
     List<String> loadInputFromFile(String filePath) {
         List<String> allLines = null;
@@ -24,7 +21,7 @@ public class FileLoader {
 
             allLines = bufferedReader.lines()
                     .collect(toList());
-        } catch (IOException e) {
+        } catch (IOException ignored) {
         }
         return allLines;
     }

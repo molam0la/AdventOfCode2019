@@ -4,7 +4,7 @@ import org.junit.Test;
 import java.util.Arrays;
 
 import static junit.framework.TestCase.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertArrayEquals;
 
 public class Day2Test {
 
@@ -43,7 +43,7 @@ public class Day2Test {
         assertEquals(3500, d2.runOpcode(intInput)[0]);
         int[] expectedResult = {3500, 9, 10, 70, 2, 3, 11, 0, 99, 30, 40, 50};
         int[] actualResult = d2.runOpcode(intInput);
-        assertTrue(Arrays.equals(expectedResult, actualResult));
+        assertArrayEquals(expectedResult, actualResult);
     }
 
     @Test
@@ -69,21 +69,21 @@ public class Day2Test {
         System.out.println("actual result" + Arrays.toString(actualResult));
         System.out.println("expected result" + Arrays.toString(expectedResult));
 
-        assertTrue(Arrays.equals(expectedResult, actualResult));
+        assertArrayEquals(expectedResult, actualResult);
     }
 
     @Test
     public void testAllOptcodesTogether() {
         int[] expectedResult = {3500, 9, 10, 70, 2, 3, 11, 0, 99, 30, 40, 50};
         int[] actualResult = d2.runOpcode(intInput);
-        assertTrue(Arrays.equals(expectedResult, actualResult));
+        assertArrayEquals(expectedResult, actualResult);
     }
 
     @Test
     public void testAllOptcodesTogether2() {
         int[] expectedResult = {3500, 9, 10, 70, 2, 3, 11, 0, 99, 30, 40, 50};
         int[] actualResult = d2.runOpcode(intInput);
-        assertTrue(Arrays.equals(expectedResult, actualResult));
+        assertArrayEquals(expectedResult, actualResult);
     }
 
     @Test
