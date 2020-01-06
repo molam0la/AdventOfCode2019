@@ -1,6 +1,4 @@
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -12,17 +10,12 @@ public class Day3 {
                 .collect(Collectors.toList());
     }
 
-    public Set<Point> runWire(List<String> wire) {
+    public Map<Point, Integer> runWire(List<String> wire) {
         int x = 0;
         int y = 0;
+        int length = 0;
 
-        // A Set rather than a List means the same Point won't be added twice (duplicates are ignored)
-        // The Point.hashCode and Point.equals methods are called when adding a Point to the Set in order to check if that
-        // Point already exists, and if it does then it is not added.
-        //
-        // With a regular HashSet the order the items are inserted in would be lost (the items will be in a 'random' order in the Set)
-        // However, with a LinkedHashSet it also preserves the order the items are added (so behaves just like a List, but without duplicates)
-        final Set<Point> points = new LinkedHashSet<>();
+        final Map<Point, Integer> points = new LinkedHashMap<>();
 
         for (String instruction : wire) {
             int moveAmount = Integer.parseInt(instruction.substring(1));
@@ -44,19 +37,18 @@ public class Day3 {
                         break;
                 }
                 // Add the current point to the list of points the wire visited
-                points.add(new Point(x, y));
+                points.putIfAbsent(new Point(x, y), ++length);
             }
         }
         return points;
     }
 
-    public Integer calculateManhattanDistance(Set<Point> wire1points, Set<Point> wire2points) {
-        Integer minimumDistance;
+    public Integer calculateManhattanDistance(Map<Point, Integer> wire1points, Map<Point, Integer> wire2points) {
 
-        return minimumDistance = wire1points.stream()
-                .filter(wire2points::contains) // Filter so we only have points which are both in wire1 and wire2 (intersections) - this uses the Point.equals method to check if points are the same
-                .map(point -> Math.abs(point.getX()) + Math.abs(point.getY())) // Map each point to the manhattan distance from the origin
-                .min(Integer::compareTo) // Get the minimum manhattan distance
+        return wire1points.keySet().stream()
+                .filter(wire2points::containsKey) // Filter so we only have points which are both in wire1 and wire2 (intersections) - this uses the Point.equals method to check if points are the same
+                .map(point -> Math.abs(point.getX()) + Math.abs(point.getY()) + wire1points.get(point) + wire2points.get(point))
+                .min(Integer::compareTo) // Get the minimum
                 .orElse(0);
     }
 
@@ -69,8 +61,8 @@ public class Day3 {
         List<String> wireInstructions1 = d3.convertWire(wires1);
         List<String> wireInstructions2 = d3.convertWire(wires2);
 
-        Set<Point> wire1Points = d3.runWire(wireInstructions1);
-        Set<Point> wire2Points = d3.runWire(wireInstructions2);
+        Map<Point, Integer> wire1Points = d3.runWire(wireInstructions1);
+        Map<Point, Integer> wire2Points = d3.runWire(wireInstructions2);
 
         System.out.println("Result part 1: " + d3.calculateManhattanDistance(wire1Points, wire2Points));
     }

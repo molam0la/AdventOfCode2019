@@ -1,8 +1,7 @@
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Set;
+import java.util.Map;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -11,8 +10,8 @@ public class Day3Test {
     Day3 d3;
     String testWires1;
     String testWires2;
-    Set<Point> wire1Points;
-    Set<Point> wire2Points;
+    Map<Point, Integer> wire1Points;
+    Map<Point, Integer> wire2Points;
 
     @Before
     public void setUp() {
